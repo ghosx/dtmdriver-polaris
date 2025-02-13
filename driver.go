@@ -129,7 +129,7 @@ func (p *polarisDriver) RegisterService(target, token string) error {
 		if err = provider.Heartbeat(hbReq); nil != err {
 			fmt.Println("polaris heartbeat error", err)
 		}
-		quit := make(chan os.Signal)
+		quit := make(chan os.Signal, 1)
 		signal.Notify(
 			quit,
 			syscall.SIGHUP,
